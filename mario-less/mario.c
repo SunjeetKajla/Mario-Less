@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-int scan(char *x, int *y){
-        fgets(x, sizeof(x), stdin);
+int scan(char *x,int size, int *y){
+        fgets(x, size, stdin);
         x[strcspn(x, "\n")] = '\0';
         return(sscanf(x, "%d", y));
 }
@@ -14,7 +14,7 @@ int main() {
     while (1){
         printf("Enter the number of lines in bricks:");
 
-        if (scan(input, &lines) != 1) {
+        if (scan(input, sizeof(input), &lines) != 1) {
             printf("Invalid input! Please enter a positive \"NUMBER\" not \"%s\"\n", input);
             continue;
         }
